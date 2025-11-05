@@ -1,0 +1,61 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2025-10-30T12:26:22.559Z",
+  "Sources": [
+    {
+      "SourceDetails": {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      },
+      "Packages": [
+        { "PackageIdentifier": "Microsoft.WindowsTerminal" },
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "CoreyButler.NVMforWindows" },
+        { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "Docker.DockerDesktop" },
+        { "PackageIdentifier": "DBeaver.DBeaver.Community" },
+        { "PackageIdentifier": "RedisInsight.RedisInsight" },
+        { "PackageIdentifier": "MongoDB.Compass.Full" },
+        { "PackageIdentifier": "Postman.Postman" },
+        { "PackageIdentifier": "Insomnia.Insomnia" },
+        { "PackageIdentifier": "Mirantis.Lens" },
+        { "PackageIdentifier": "Python.Python.3.14" },
+        { "PackageIdentifier": "Mozilla.Firefox" },
+        { "PackageIdentifier": "Google.Chrome" },
+        { "PackageIdentifier": "Microsoft.Edge" },
+        { "PackageIdentifier": "Notepad++.Notepad++" },
+        { "PackageIdentifier": "Microsoft.PowerShell" },
+        {"PackageIdentifier": "Microsoft.SQLServerManagementStudio"},
+        {"PackageIdentifier": "Atlassian.Sourcetree"},
+
+        // 👇 IDEs & Editors
+        { "PackageIdentifier": "Microsoft.VisualStudio.2022.Community" },
+        { "PackageIdentifier": "Microsoft.VisualStudio.2022.BuildTools" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode.Insiders" },
+        { "PackageIdentifier": "JetBrains.Rider" },
+
+        // 🧩 Utilities & Cloud
+        { "PackageIdentifier": "Microsoft.OneDrive" },
+        { "PackageIdentifier": "Microsoft.Teams" },
+        { "PackageIdentifier": "Logitech.Options" },
+        { "PackageIdentifier": "Logitech.GHUB" }
+      ]
+    },
+    {
+      "SourceDetails": {
+        "Argument": "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+        "Identifier": "StoreEdgeFD",
+        "Name": "msstore",
+        "Type": "Microsoft.Rest"
+      },
+      "Packages": [
+        { "PackageIdentifier": "XP89DCGQ3K6VLD" }
+      ]
+    }
+  ],
+  "WinGetVersion": "1.12.350"
+}

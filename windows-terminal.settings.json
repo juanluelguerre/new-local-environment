@@ -1,0 +1,76 @@
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "copyFormatting": "none",
+  "copyOnSelect": false,
+
+  "profiles": {
+    "defaults": {
+      "font": {
+        "face": "CaskaydiaCove Nerd Font",
+        "size": 11
+      },
+      "colorScheme": "Campbell",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.9,
+      "padding": "10, 10, 10, 10"
+    },
+    "list": [
+      {
+        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+        "name": "PowerShell",
+        "source": "Windows.Terminal.PowershellCore",
+        "startingDirectory": "%USERPROFILE%",
+        "hidden": false,
+        "backgroundImage": "%USERPROFILE%\\Documents\\WindowsTerminal-Powershellpng.png",
+        "backgroundImageAlignment": "bottomRight",
+        "backgroundImageStretchMode": "none",
+        "tabTitle": "PowerShell 💎",
+        "commandline": "pwsh.exe -NoLogo"
+      },
+      {
+        "guid": "{d9d92150-6b0f-5100-a5af-999d999d2025}",
+        "name": "Ubuntu 25.10 (WSL)",
+        "source": "Windows.Terminal.Wsl",
+        "commandline": "wsl.exe -d Ubuntu-25.10",
+        "startingDirectory": "//wsl$/Ubuntu-25.10/home/juanlu",
+        "hidden": false,
+        "tabTitle": "🐧 Ubuntu 25.10",
+        "backgroundImage": "%USERPROFILE%\\Documents\\WindowsTerminal-Ubuntu.png",
+        "backgroundImageAlignment": "bottomRight",
+        "backgroundImageStretchMode": "none"
+      },
+      {
+        "guid": "{569d0a74-128f-5103-8871-43b6635d61a7}",
+        "name": "Developer Command Prompt for VS 2022",
+        "source": "Windows.Terminal.VisualStudio",
+        "hidden": false
+      },
+      {
+        "guid": "{b72ad116-e521-5803-ab49-a7f4d9c82cf7}",
+        "name": "Developer PowerShell for VS 2022",
+        "source": "Windows.Terminal.VisualStudio",
+        "hidden": false
+      }
+    ]
+  },
+
+  "schemes": [],
+  "actions": [
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "auto",
+        "splitMode": "duplicate"
+      },
+      "keys": "alt+shift+d"
+    },
+    { "command": "find", "keys": "ctrl+shift+f" },
+    { "command": "paste", "keys": "ctrl+v" },
+    { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+c" }
+  ],
+
+  "newTabMenu": [
+    { "type": "remainingProfiles" }
+  ]
+}
