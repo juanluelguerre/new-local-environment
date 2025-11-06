@@ -1,0 +1,169 @@
+services:
+  mongo:
+    container_name: mongo
+    hostname: mongo
+    image: mongo:8.0.15
+    volumes:
+      - /d/data/mongo/db:/data/db
+    ports:
+      - 27017:27017
+    mem_limit: 256m
+    mem_reservation: 128m
+    cpus: 0.5
+    networks:
+      - infra_net
+
+  redis:
+    container_name: redis
+    hostname: redis
+    image: redis:7 #latest
+    volumes:
+      - /d/data/redis/db:/data
+    ports:
+      - 6379:6379
+    mem_limit: 64m
+    mem_reservation: 32m
+    cpus: 0.25
+    networks:
+      - infra_net
+
+  elastic:
+    container_name: elastic
+    hostname: elastic
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    environment:
+      - discovery.type=single-node
+      #- ES_JAVA_OPTS=-Xms512m -Xmx512m # Limit JVM heap to 512MB for lower RAM usage
+      - network.host=0.0.0.0
+    volumes:
+      - /d/data/elasticsearch/db:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    mem_limit: 2g
+    mem_reservation: 1g
+    cpus: 1
+    networks:
+      - infra_net
+
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:14.5
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - /d/data/postgres/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    mem_limit: 256m
+    mem_reservation: 128m
+    networks:
+      - infra_net
+
+  # Once started up, you'll have a user with
+  # username: admin
+  # password: unleash4all
+  unleash:
+    container_name: unleash
+    hostname: unleash
+    image: unleashorg/unleash-server
+    environment:
+      - DATABASE_HOST=postgres
+      - DATABASE_NAME=unleash
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=root
+      - DATABASE_SSL=false
+    restart: on-failure
+    #depends_on:
+    #  - postgres
+    ports:
+      - 4242:4242
+    mem_limit: 128m
+    mem_reservation: 66m
+    networks:
+      - infra_net
+
+  eventstore:
+    # Dashboard -> http://localhost:2113
+    container_name: eventstore
+    hostname: eventstore
+    image: eventstore/eventstore:21.10.0-buster-slim
+    environment:
+      - EVENTSTORE_MEM_DB=True
+      - EVENTSTORE_CLUSTER_SIZE=1
+      - EVENTSTORE_RUN_PROJECTIONS=All
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true
+      - EVENTSTORE_EXT_TCP_PORT=1113
+      - EVENTSTORE_HTTP_PORT=2113
+      - EVENTSTORE_INSECURE=true
+      - EVENTSTORE_ENABLE_EXTERNAL_TCP=true
+      - EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP=true
+    ports:
+      - 1113:1113
+      - 2113:2113
+    volumes:
+      - /d/data/eventstore/lib:/var/lib/eventstore
+      - /d/data/eventstore/log:/var/log/eventstore
+      - /d/data/eventstore/certs:/etc/eventstore/certs
+      # - /d/data/eventstore/data:/var/lib/eventstore-data
+      # - /d/data/eventstore/index:/var/lib/eventstore-index
+    mem_limit: 256m
+    mem_reservation: 128m
+    networks:
+      - infra_net
+
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:latest
+    ports:
+      - 5672:5672
+      - 15672:15672
+    mem_limit: 256m
+    mem_reservation: 128m
+    networks:
+      - infra_net
+
+  ftpserver:
+    container_name: ftpServer
+    hostname: ftpServer
+    image: delfer/alpine-ftp-server:latest
+    environment:
+      USERS: |
+        one|password123.|/home/user|7777|7777
+      ADDRESS: "localhost"
+      TLS_CERT: "/etc/ssl/private/vsftpd.crt"
+      TLS_KEY: "/etc/ssl/private/vsftpd.key"
+    ports:
+      - 21:21
+      - 21000-21010:21000-21010
+    volumes:
+      - /d/data/ftpserver/upload:/home/user
+      - /d/data/ftpserver/certs/vsftpd.crt:/etc/ssl/private/vsftpd.crt
+      - /d/data/ftpserver/certs/vsftpd.key:/etc/ssl/private/vsftpd.key
+    mem_limit: 128m
+    mem_reservation: 64m
+    networks:
+      - infra_net
+
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - /d/data/sftp/upload:/home/one
+    ports:
+      - "22:22"
+    command: one:password:0777
+    # command: "one:password:::home"
+    mem_limit: 500m
+    mem_reservation: 100m
+    networks:
+      - infra_net
+
+networks:
+  # All these network will be created with the project preffix: ie.: nc_infra_net
+  infra_net:
+    driver: bridge
+  apps_net:
+    driver: bridge
