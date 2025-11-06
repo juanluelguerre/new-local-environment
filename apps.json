@@ -28,7 +28,7 @@
         { "PackageIdentifier": "Microsoft.Edge" },
         { "PackageIdentifier": "Notepad++.Notepad++" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
-        {"PackageIdentifier": "Microsoft.SQLServerManagementStudio"},
+        {"PackageIdentifier": "Microsoft.SQLServerManagementStudio.21"},
         {"PackageIdentifier": "Atlassian.Sourcetree"},
 
         // 👇 IDEs & Editors
