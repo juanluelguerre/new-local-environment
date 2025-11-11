@@ -28,13 +28,16 @@
         { "PackageIdentifier": "Microsoft.Edge" },
         { "PackageIdentifier": "Notepad++.Notepad++" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
-        {"PackageIdentifier": "Microsoft.SQLServerManagementStudio.21"},
-        {"PackageIdentifier": "Atlassian.Sourcetree"},
+        { "PackageIdentifier": "Microsoft.SQLServerManagementStudio.21" },
+        { "PackageIdentifier": "Atlassian.Sourcetree" },
 
         // 👇 IDEs & Editors
         { "PackageIdentifier": "Microsoft.VisualStudio.2022.Community" },
         { "PackageIdentifier": "Microsoft.VisualStudio.2022.BuildTools" },
-        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudioCode",
+          "Override": "/VERYSILENT /SP- /MERGETASKS=\"!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath\""
+        },
         { "PackageIdentifier": "Microsoft.VisualStudioCode.Insiders" },
         { "PackageIdentifier": "JetBrains.Rider" },
 
@@ -52,9 +55,7 @@
         "Name": "msstore",
         "Type": "Microsoft.Rest"
       },
-      "Packages": [
-        { "PackageIdentifier": "XP89DCGQ3K6VLD" }
-      ]
+      "Packages": [{ "PackageIdentifier": "XP89DCGQ3K6VLD" }]
     }
   ],
   "WinGetVersion": "1.12.350"
