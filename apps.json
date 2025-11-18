@@ -32,8 +32,8 @@
         { "PackageIdentifier": "Atlassian.Sourcetree" },
 
         // 👇 IDEs & Editors
-        { "PackageIdentifier": "Microsoft.VisualStudio.2022.Community" },
-        { "PackageIdentifier": "Microsoft.VisualStudio.2022.BuildTools" },
+        { "PackageIdentifier": "Microsoft.VisualStudio.Community" },
+        { "PackageIdentifier": "Microsoft.VisualStudio.BuildTools" },
         {
           "PackageIdentifier": "Microsoft.VisualStudioCode",
           "Override": "/VERYSILENT /SP- /MERGETASKS=\"!runcode,!desktopicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath\""
