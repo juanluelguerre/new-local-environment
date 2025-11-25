@@ -40,7 +40,8 @@
         },
         { "PackageIdentifier": "Microsoft.VisualStudioCode.Insiders" },
         { "PackageIdentifier": "JetBrains.Rider" },
-        { "PackageIdentifier": "JetBrains.DataGrip"},
+        { "PackageIdentifier": "JetBrains.DataGrip" },
+        { "PackageIdentifier": "PostgreSQL.pgAdmin" },
 
         // 🧩 Utilities & Cloud
         { "PackageIdentifier": "Microsoft.OneDrive" },
