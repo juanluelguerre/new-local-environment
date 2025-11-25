@@ -40,12 +40,16 @@
         },
         { "PackageIdentifier": "Microsoft.VisualStudioCode.Insiders" },
         { "PackageIdentifier": "JetBrains.Rider" },
+        { "PackageIdentifier": "JetBrains.DataGrip"},
 
         // 🧩 Utilities & Cloud
         { "PackageIdentifier": "Microsoft.OneDrive" },
         { "PackageIdentifier": "Microsoft.Teams" },
+
         { "PackageIdentifier": "Logitech.Options" },
-        { "PackageIdentifier": "Logitech.GHUB" }
+        { "PackageIdentifier": "Logitech.GHUB" },
+
+        { "PackageIdentifier": "OBSProject.OBSStudio" }
       ]
     },
     {
